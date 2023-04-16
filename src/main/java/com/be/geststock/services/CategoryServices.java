@@ -42,4 +42,7 @@ public class CategoryServices {
     }
 
 
+    public Category findCategoryById(Long id) {
+        return repository.findById(id).get();
+    }
 }
