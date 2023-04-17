@@ -1,5 +1,6 @@
 package com.be.geststock.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,27 +10,30 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "product")
 public class Product {
     @Id
-    @Column(name = "productId")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "productid")
     private Long prodId;
 
-    @Column(name = "productName")
+    @Column(name = "productname")
     private String nameProd;
 
-    @Column(name = "productDescription")
+    @Column(name = "productdescription")
     private String descProd;
 
-    @Column(name = "productPrice")
+    @Column(name = "productprice")
     private double priceProd;
 
-    @Column(name = "productQty")
+    @Column(name = "productqty")
     private double qtyProd;
 
+    @JsonIgnore
     @ManyToOne(
             cascade = CascadeType.ALL,
             fetch = FetchType.EAGER
     )
-    @JoinColumn(name = "categoryId")
+    @JoinColumn(name = "categoryid")
     private Category category;
 }

@@ -39,7 +39,7 @@ public class GestStockRestController {
         return categoryServices.findCategoryById(id);
     }
 
-    @GetMapping(value = "/products/category/{id}")
+    @GetMapping(value = "/products/categories/{id}")
     public List<Product> getProductsByCategory(@PathVariable Long id){
         return categoryServices.findProductsOfCategory(id);
     }
@@ -49,7 +49,7 @@ public class GestStockRestController {
         return productServices.saveProd(product);
     }
 
-    @PostMapping(value = "/category")
+    @PostMapping(value = "/categories")
     public Category addCategory(@RequestBody Category category){
         return categoryServices.saveCategory(category);
     }
@@ -59,7 +59,7 @@ public class GestStockRestController {
         return productServices.updateProd(id, product);
     }
 
-    @PutMapping(value = "/category/{id}")
+    @PutMapping(value = "/categories/{id}")
     public Category updateCategory(@PathVariable Long id, @RequestBody Category category){
         return categoryServices.updateCategory(id, category);
     }
@@ -69,17 +69,16 @@ public class GestStockRestController {
         productServices.deletePRod(id);
     }
 
-    @DeleteMapping(value = "/category/{id}")
+    @DeleteMapping(value = "/categories/{id}")
     public void deleteCategory(@PathVariable Long id){
         categoryServices.deleteCategory(id);
     }
 
-    @GetMapping(value = "products/{id}/stock")
+    @GetMapping(value = "/products/{id}/stock")
     public StockAvailibility etatStock(@PathVariable Long id){
         Product product = productServices.findProdById(id);
         return new StockAvailibility(product.getQtyProd(), null);
     }
 
-    
 
 }
