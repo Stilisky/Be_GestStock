@@ -39,7 +39,7 @@ public class GestStockRestController {
         return categoryServices.findCategoryById(id);
     }
 
-    @GetMapping(value = "/products/categories/{id}")
+    @GetMapping(value = "/categories/{id}/products")
     public List<Product> getProductsByCategory(@PathVariable Long id){
         return categoryServices.findProductsOfCategory(id);
     }

@@ -29,7 +29,6 @@ public class Product {
     @Column(name = "productqty")
     private double qtyProd;
 
-    @JsonIgnore
     @ManyToOne(
             cascade = CascadeType.ALL,
             fetch = FetchType.EAGER
